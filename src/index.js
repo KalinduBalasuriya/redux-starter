@@ -33,17 +33,29 @@
 // console.log(newEmployee);
 
 import store from "./store/configurestore";
-import { addTask, removeTask } from "./store/tasks";
+import { addTask, removeTask,taskCompleted } from "./store/tasks";
 
-const unsubscribe = store.subscribe(()=>{
-    console.log("Updated", store.getState() );
-})
+// const unsubscribe = store.subscribe(()=>{
+//     console.log("Updated", store.getState() );
+// })
 
-store.dispatch(addTask("Task 1"));
+console.log(addTask());
+
+store.dispatch(addTask({task:"Task 1"}));
 console.log(store.getState());
 
-unsubscribe();
-store.dispatch(removeTask(1));
-// console.log(store.getState());;
+store.dispatch(addTask({task:"Task 2"}));
+console.log(store.getState());
+
+store.dispatch(addTask({task:"Task 3"}));
+console.log(store.getState())
+
+// unsubscribe();
+store.dispatch(removeTask({id:2}));
+console.log(store.getState());
+
+store.dispatch(taskCompleted({id:1}));
+console.log(store.getState());
+
 
 

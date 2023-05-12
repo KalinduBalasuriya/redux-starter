@@ -1,3 +1,4 @@
+const { SourceMap } = require("module");
 const path = require("path");
 
 module.exports = {
@@ -10,5 +11,6 @@ module.exports = {
         contentBase: path.join(__dirname, "dist"),
         port: 3000,
     },
+    devtool: "source-map",
     mode: "development",
 };
