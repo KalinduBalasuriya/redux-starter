@@ -32,8 +32,8 @@
 // console.log(employee);
 // console.log(newEmployee);
 
-import store from "./store";
-import { addTask, removeTask } from "./actions";
+import store from "./store/configurestore";
+import { addTask, removeTask } from "./store/tasks";
 
 const unsubscribe = store.subscribe(()=>{
     console.log("Updated", store.getState() );

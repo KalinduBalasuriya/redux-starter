@@ -1,19 +1,30 @@
-// {
-//     type : "addTask"
-//     payload : {
-//         id: 1
-//         task : "This is new task"
-//         completed : false
-//     } 
-// }
-import * as actionTypes from './actionTypes'
+ 
+//  action types
+ const ADD_TASK = "ADD_TASK";
+ const REMOVE_TASK = "REMOVE_TASK";
+ const TASK_COMPLETED = "TASK_COMPLETED";
 
+//  actions
+ export const addTask = (task)=>{
+    return {type : ADD_TASK, payload:{task:task} }
+}
+
+export const removeTask = (id)=>{
+    return {type : REMOVE_TASK, payload:{id:id}}
+}
+
+export const taskCompleted = (id)=>{
+    return {type : TASK_COMPLETED, payload:{id:id}}
+}
+
+
+// reducer
 let id = 0;
 
 function reducer(state = [], action) {
 
     switch (action.type) {
-        case actionTypes.addTask:
+        case addTask:
             return [
                 ...state,
                 {
@@ -22,10 +33,10 @@ function reducer(state = [], action) {
                     completed: false
                 },
             ]
-        case actionTypes.removeTask:
+        case removeTask:
             return state.filter(task => task.id !== action.payload.id)
 
-        case actionTypes.taskCompled :
+        case taskCompled :
             return state.map(task => task.id === action.payload.id ? {
                 ...task, completed: true
             } : task) 
