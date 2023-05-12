@@ -11,6 +11,6 @@ export const removeTask = (id)=>{
 export const taskCompleted = (id)=>{
     return {type : "taskCompleted", payload:{id:id}}
 }
-
+const actions
 
 
