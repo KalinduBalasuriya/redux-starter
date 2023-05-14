@@ -39,7 +39,7 @@ import { addTask, removeTask,taskCompleted } from "./store/tasks";
 //     console.log("Updated", store.getState() );
 // })
 
-console.log(addTask());
+
 
 store.dispatch(addTask({task:"Task 1"}));
 console.log(store.getState());

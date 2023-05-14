@@ -1,12 +1,15 @@
- import { createAction, createReducer  } from "@reduxjs/toolkit";
+import { createSlice, createReducer, createAction} from "@reduxjs/toolkit";
 //  import { Immer } from "immer";
 
 
 
 //  actions
-export const addTask = createAction("ADD_TASK");
-export const removeTask = createAction("REMOVE_TASK");
-export const taskCompleted = createAction("TASK_COMPLETED");
+// export const addTask = createAction("ADD_TASK");
+// export const removeTask = createAction("REMOVE_TASK");
+// export const taskCompleted = createAction("TASK_COMPLETED");
+const hey = createAction('name');
+console.log(hey());
+
 
 
 //  export const addTask = (task)=>{
@@ -24,26 +27,55 @@ export const taskCompleted = createAction("TASK_COMPLETED");
 
 // reducer
 let id = 0;
+const test = createReducer([], {});
+console.log(test);
 
-export default createReducer([],{
-    "ADD_TASK" : (state ,action)=>{
-        state.push({
-            id : ++id,
-            task: action.payload.task,
-            completed : false
-        })
-    },
+const taskSlice = createSlice({
+    name: 'tasks',
+    initialState: [],
+    reducers: {
+        addTask: (state, action) => {
+            state.push({
+                id: ++id,
+                task: action.payload.task,
+                completed: false
+            })
+        },
 
-    "REMOVE_TASK" : (state, action)=>{
-        const index = state.findIndex(task=> task.id === action.payload.id);
-        state.splice(index, 1);
-    },
-
-    "TASK_COMPLETED" : (state, action)=>{
-        const index = state.findIndex(task=> task.id === action.payload.id)
+        removeTask: (state, action)=>{
+            const index = state.findIndex(task => task.id === action.payload.id);
+            state.splice(index, 1);  
+        },
+        taskCompleted: (state, action)=>{
+            const index = state.findIndex(task => task.id === action.payload.id)
         state[index].completed = true;
+        }
     }
-})
+});
+console.log(taskSlice)
+
+export const {addTask, removeTask, taskCompleted} = taskSlice.actions
+export default taskSlice.reducer;
+
+// export default createReducer([], {
+//     "ADD_TASK": (state, action) => {
+//         state.push({
+//             id: ++id,
+//             task: action.payload.task,
+//             completed: false
+//         })
+//     },
+
+//     "REMOVE_TASK": (state, action) => {
+//         const index = state.findIndex(task => task.id === action.payload.id);
+//         state.splice(index, 1);
+//     },
+
+//     "TASK_COMPLETED": (state, action) => {
+//         const index = state.findIndex(task => task.id === action.payload.id)
+//         state[index].completed = true;
+//     }
+// })
 
 // function reducer(state = [], action) {
 
@@ -63,7 +95,7 @@ export default createReducer([],{
 //         case taskCompleted.type :
 //             return state.map(task => task.id === action.payload.id ? {
 //                 ...task, completed: true
-//             } : task) 
+//             } : task)
 
 //         default:
 //             return state;
