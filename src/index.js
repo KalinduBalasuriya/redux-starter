@@ -34,7 +34,7 @@
 
 import store from "./store/configurestore";
 import { addTask, removeTask,taskCompleted } from "./store/tasks";
-import { addEmployee, removeEmployee } from "./store/employee";
+import { addEmployee, removeEmployee,  } from "./store/employee";
 
 // const unsubscribe = store.subscribe(()=>{
 //     console.log("Updated", store.getState() );
@@ -46,6 +46,7 @@ store.dispatch(addEmployee({empName:"Harley"}));
 store.dispatch(addEmployee({empName:"John"}));
 
 store.dispatch(addEmployee({empName:"John"}));
+store.dispatch({type:"SHOW-ERROR", payload:{error:"User not found!"}})
 
 //tasks
 store.dispatch(addTask({task:"Task 1"}));

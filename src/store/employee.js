@@ -20,5 +20,5 @@ const employeeSlice = createSlice({
 
 console.log(employeeSlice);
 
-export const { addEmployee,removeEmployee } = employeeSlice.actions;
+export const { addEmployee,removeEmployee, SHOW_ERROR } = employeeSlice.actions;
 export default employeeSlice.reducer;
