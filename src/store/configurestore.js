@@ -1,9 +1,14 @@
 
-import { configureStore } from '@reduxjs/toolkit';
 import {devToolsEnhancer} from "redux-devtools-extension"
-import reducer from './tasks';
-import { createReducer } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import employeeReducer from './employee';
+import taskReducer from './tasks'
 
-const store = configureStore({reducer});
+
+
+const store = configureStore({reducer : {
+    tasks : taskReducer,
+    employees : employeeReducer
+}});
 
 export default store;

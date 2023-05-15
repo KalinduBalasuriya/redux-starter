@@ -7,8 +7,7 @@ import { createSlice, createReducer, createAction} from "@reduxjs/toolkit";
 // export const addTask = createAction("ADD_TASK");
 // export const removeTask = createAction("REMOVE_TASK");
 // export const taskCompleted = createAction("TASK_COMPLETED");
-const hey = createAction('name');
-console.log(hey());
+
 
 
 
@@ -27,8 +26,7 @@ console.log(hey());
 
 // reducer
 let id = 0;
-const test = createReducer([], {});
-console.log(test);
+
 
 const taskSlice = createSlice({
     name: 'tasks',
@@ -54,7 +52,7 @@ const taskSlice = createSlice({
 });
 console.log(taskSlice)
 
-export const {addTask, removeTask, taskCompleted} = taskSlice.actions
+export const {addTask, removeTask, taskCompleted} = taskSlice.actions;
 export default taskSlice.reducer;
 
 // export default createReducer([], {

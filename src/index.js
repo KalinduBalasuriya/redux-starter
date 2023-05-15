@@ -34,28 +34,32 @@
 
 import store from "./store/configurestore";
 import { addTask, removeTask,taskCompleted } from "./store/tasks";
+import { addEmployee, removeEmployee } from "./store/employee";
 
 // const unsubscribe = store.subscribe(()=>{
 //     console.log("Updated", store.getState() );
 // })
 
 
+store.dispatch(addEmployee({empName:"Harley"}));
 
+store.dispatch(addEmployee({empName:"John"}));
+
+store.dispatch(addEmployee({empName:"John"}));
+
+//tasks
 store.dispatch(addTask({task:"Task 1"}));
-console.log(store.getState());
-
 store.dispatch(addTask({task:"Task 2"}));
-console.log(store.getState());
-
 store.dispatch(addTask({task:"Task 3"}));
-console.log(store.getState())
-
-// unsubscribe();
 store.dispatch(removeTask({id:2}));
+store.dispatch(taskCompleted({id:1}));
+
+
 console.log(store.getState());
 
-store.dispatch(taskCompleted({id:1}));
-console.log(store.getState());
+
+
+
 
 
 
